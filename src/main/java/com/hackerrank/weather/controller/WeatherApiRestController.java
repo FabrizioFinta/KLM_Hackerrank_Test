@@ -92,9 +92,17 @@ public class WeatherApiRestController {
             } else {
                 result = weatherRepository.findByCityInIgnoreCase(cityParameter);
             }
-
         } else {
-            result = weatherRepository.findAll();
+            if (sortOpt.isPresent()) {
+                switch (sortOpt.get()) {
+                    case "date":
+                        result = weatherRepository.findAllByOrderByDate();
+                    case "-date":
+                        result = weatherRepository.findAllByOrderByDateDesc();
+                }
+            } else {
+                result = weatherRepository.findAll();
+            }
         }
 
         List<WeatherDTO> resultDTOs = result.stream()
