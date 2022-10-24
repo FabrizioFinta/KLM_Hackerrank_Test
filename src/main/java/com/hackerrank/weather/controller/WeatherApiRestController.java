@@ -74,8 +74,10 @@ public class WeatherApiRestController {
                 switch (sortOpt.get()) {
                     case "date":
                         result = weatherRepository.findByDateOrderByDate(dateParameter);
+                        break;
                     case "-date":
                         result = weatherRepository.findByDateOrderByDateDesc(dateParameter);
+                        break;
                 }
             } else {
                 result = weatherRepository.findByDate(dateParameter);
@@ -86,8 +88,10 @@ public class WeatherApiRestController {
                 switch (sortOpt.get()){
                     case "date":
                         result = weatherRepository.findByCityInIgnoreCaseOrderByDate(cityParameter);
+                        break;
                     case "-date":
                         result = weatherRepository.findByCityInIgnoreCaseOrderByDateDesc(cityParameter);
+                        break;
                 }
             } else {
                 result = weatherRepository.findByCityInIgnoreCase(cityParameter);
@@ -97,8 +101,10 @@ public class WeatherApiRestController {
                 switch (sortOpt.get()) {
                     case "date":
                         result = weatherRepository.findAllByOrderByDate();
+                        break;
                     case "-date":
                         result = weatherRepository.findAllByOrderByDateDesc();
+                        break;
                 }
             } else {
                 result = weatherRepository.findAll();
